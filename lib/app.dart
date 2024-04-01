@@ -7,11 +7,11 @@ class BusBooking extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       title: 'Bus Booking App',
+      debugShowCheckedModeBanner: false,
       theme: lightTheme(),
       onGenerateRoute: AppRoutes.onGenerateRoute,
-      
     );
   }
 }

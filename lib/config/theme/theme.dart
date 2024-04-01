@@ -1,36 +1,55 @@
+// ignore_for_file: unused_local_variable
+
 import "package:bus_booking/core/util/app_colors.dart";
-import "package:bus_booking/core/util/app_strings.dart";
-import"package:flutter/material.dart";
+import "package:flutter/material.dart";
 
 ThemeData lightTheme() {
   return ThemeData(
-    primaryColor: AppColors.primary,
-    hintColor: AppColors.hint,
-    brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white,
-    fontFamily: AppStrings.fontFamily,
-    appBarTheme: const AppBarTheme(
-      centerTitle: true,
-      color: Colors.transparent,
-      elevation: 0,
-      titleTextStyle: TextStyle(
-          fontWeight: FontWeight.w500, color: Colors.black, fontSize: 20),
-    ),
+    scaffoldBackgroundColor: AppColors.bgColor,
     textTheme: const TextTheme(
-      bodyMedium: TextStyle(
-          height: 1.3,
-          fontSize: 22,
-          color: Colors.white,
-          fontWeight: FontWeight.bold),
+      titleLarge: TextStyle(
+        fontSize: 32,
+        color: AppColors.kTextColor,
+        fontWeight: FontWeight.w600,
+      ),
+      titleMedium: TextStyle(
+        fontSize: 18,
+        color: AppColors.kWhiteColor,
+        fontWeight: FontWeight.w700,
+      ),
+      titleSmall: TextStyle(
+        fontSize: 12,
+        color: AppColors.kLightTextColor,
+        fontWeight: FontWeight.w600,
+      ),
     ),
+    // elevatedButtonTheme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        elevation: 5,
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.black,
+        padding: const EdgeInsets.all(8),
+        shadowColor: AppColors.kBlackColor,
+        minimumSize: const Size.fromHeight(64),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(11),
         ),
+        backgroundColor: AppColors.kBlackColor,
+      ),
+    ),
+    // TextField Theme
+    inputDecorationTheme: InputDecorationTheme(
+      // contentPadding: const EdgeInsets.symmetric(vertical: 22.0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(color: AppColors.kInputBorderColor),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: AppColors.kInputBorderColor),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      hintStyle: const TextStyle(
+        fontSize: 16,
+        color: AppColors.kLightTextColor,
+        fontWeight: FontWeight.w600,
       ),
     ),
   );
