@@ -5,6 +5,7 @@ import "package:flutter/material.dart";
 
 ThemeData lightTheme() {
   return ThemeData(
+    primaryColor: AppColors.kBlackColor,
     scaffoldBackgroundColor: AppColors.bgColor,
     textTheme: const TextTheme(
       titleLarge: TextStyle(
@@ -26,6 +27,11 @@ ThemeData lightTheme() {
     // elevatedButtonTheme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+        textStyle: const TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+        ),
         padding: const EdgeInsets.all(8),
         shadowColor: AppColors.kBlackColor,
         minimumSize: const Size.fromHeight(64),

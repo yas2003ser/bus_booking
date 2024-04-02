@@ -1,3 +1,4 @@
+import 'package:bus_booking/screens/auth/informations_screen.dart';
 import 'package:bus_booking/screens/auth/login/login.dart';
 import 'package:bus_booking/screens/auth/signup/signup.dart';
 import 'package:bus_booking/screens/auth/welcome_screen.dart';
@@ -16,7 +17,7 @@ class Routes {
   static const String help = '/help';
   static const String home = '/home';
   static const String forgetPassword = '/forgetPassword';
-  static const String information = '/information';
+  static const String informationScreen = '/InformationScreen';
 }
 
 class AppRoutes {
@@ -38,7 +39,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const Signup(),
         );
-      case Routes.profile:
+      case Routes.informationScreen:
+        return MaterialPageRoute(
+          builder: (_) => const InformationScreen(),
+        );
       //   return MaterialPageRoute(
       //     builder: (_) => ,
       //   );

@@ -53,18 +53,10 @@ class _SignupState extends State<Signup> {
                 ),
                 SizedBox(height: size.height * 0.023),
                 Text(
-                  "تسجيل جديد",
+                  "Signup to Bus Booking App",
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 SizedBox(height: size.height * 0.018),
-                Text(
-                  "انشاء حساب جديد",
-                  style: Theme.of(context)
-                      .textTheme
-                      .subtitle1!
-                      .copyWith(fontSize: 15),
-                ),
-                SizedBox(height: size.height * 0.020),
                 Form(
                   key: _formKey,
                   child: Column(
@@ -76,14 +68,14 @@ class _SignupState extends State<Signup> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'يرجى ملء البريد الإلكتروني';
+                            return 'Please enter your email';
                           }
                           return null;
                         },
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
-                          hintText: "البريد الالكتروني",
+                          hintText: "Email",
                         ),
                       ),
                       SizedBox(height: size.height * 0.016),
@@ -93,14 +85,14 @@ class _SignupState extends State<Signup> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'يرجى ملء اسم المستخدم';
+                            return 'Please enter your username';
                           }
                           return null;
                         },
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.name,
                         decoration: const InputDecoration(
-                          hintText: "الاسم المستخدم",
+                          hintText: "Username",
                         ),
                       ),
                       SizedBox(height: size.height * 0.016),
@@ -110,7 +102,7 @@ class _SignupState extends State<Signup> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'يرجى ملء كلمة المرور';
+                            return 'Please enter your password';
                           }
                           return null;
                         },
@@ -118,7 +110,7 @@ class _SignupState extends State<Signup> {
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
-                          hintText: "كلمة المرور",
+                          hintText: "Password",
                           suffixIcon: IconButton(
                             icon: Icon(passvis
                                 ? Icons.visibility
@@ -138,10 +130,10 @@ class _SignupState extends State<Signup> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'يرجى ملء تأكيد كلمة المرور';
+                            return 'Please enter your password';
                           }
                           if (value != password) {
-                            return 'تأكيد كلمة المرور غير متطابقة';
+                            return 'Passwords do not match';
                           }
                           return null;
                         },
@@ -149,7 +141,7 @@ class _SignupState extends State<Signup> {
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
-                          hintText: "تاكيد كلمة المرور",
+                          hintText: "Confirm Password",
                           suffixIcon: IconButton(
                             icon: Icon(passvis1
                                 ? Icons.visibility
@@ -164,9 +156,13 @@ class _SignupState extends State<Signup> {
                       ),
                       SizedBox(height: size.height * 0.025),
                       ElevatedButton(
-                        onPressed: () async {},
+                        onPressed: ()  {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.pushNamed(context, Routes.informationScreen);
+                          }
+                        },
                         child: Text(
-                          "انشئ حسابك",
+                          "Sign up",
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ),
@@ -178,7 +174,7 @@ class _SignupState extends State<Signup> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "لديك حساب ! ",
+                      " Already have an account?",
                       style: Theme.of(context).textTheme.subtitle1!.copyWith(
                           color: const Color.fromARGB(255, 65, 73, 75)),
                     ),
@@ -188,7 +184,7 @@ class _SignupState extends State<Signup> {
                         Navigator.pushNamed(context, Routes.login);
                       },
                       child: Text(
-                        "تسجيل الدخول",
+                        "Sign in",
                         style: Theme.of(context)
                             .textTheme
                             .subtitle1!

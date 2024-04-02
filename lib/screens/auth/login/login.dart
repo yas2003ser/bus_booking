@@ -4,10 +4,9 @@ import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Login extends StatefulWidget {
- 
-
   const Login({super.key});
 
   @override
@@ -43,16 +42,16 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: size.height * 0.023),
                 Text(
-                  "مرحبا بكم في Mind",
+                  "Welcome to Bus Booking App",
                   style: Theme.of(context).textTheme.headline5,
                 ),
                 SizedBox(height: size.height * 0.018),
                 Text(
-                  "تسجيل الدخول",
+                  "sign in",
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle1!
-                      .copyWith(fontSize: 15),
+                      .titleLarge!
+                      .copyWith(fontSize: 15, color: Colors.black),
                 ),
                 SizedBox(height: size.height * 0.020),
                 Form(
@@ -67,14 +66,13 @@ class _LoginState extends State<Login> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'الرجاء إدخال البريد الإلكتروني';
+                            return 'please enter your email';
                           }
                           return null;
                         },
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
-                          
-                          hintText: "البريد الإلكتروني",
+                          hintText: "Email",
                         ),
                       ),
                       SizedBox(height: size.height * 0.016),
@@ -86,14 +84,14 @@ class _LoginState extends State<Login> {
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'الرجاء إدخال كلمة المرور';
+                            return 'please enter your password';
                           }
                           return null;
                         },
                         obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
-                          hintText: "كلمة المرور",
+                          hintText: "Password",
 
                           // suffixIcon:  IconButton( icon: Icon(
                           //   passvis ? Icons.visibility : Icons.visibility_off
@@ -111,22 +109,18 @@ class _LoginState extends State<Login> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    "نسيت كلمة المرور!",
+                    "Forgot Password?",
                     style: Theme.of(context)
                         .textTheme
                         .titleSmall!
                         .copyWith(color: Colors.black),
                   ),
                 ),
-                Text(
-                  "احفظ تسجيل دخولي",
-                  style: Theme.of(context).textTheme.titleSmall,
-                ),
-                SizedBox(height: size.height * 0.029),
+                SizedBox(height: size.height * 0.021),
                 ElevatedButton(
                   onPressed: () async {},
                   child: Text(
-                    "تسجيل الدخول",
+                    " sign in",
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
@@ -134,17 +128,18 @@ class _LoginState extends State<Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "لم تسجل بعد؟\t",
-                      style: Theme.of(context).textTheme.titleSmall,
-                    ),
+                    Text("Don't have an account?\t",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                        )),
                     CupertinoButton(
                       padding: EdgeInsets.zero,
                       onPressed: () {
                         Navigator.pushNamed(context, Routes.signUp);
                       },
                       child: Text(
-                        "انشاء حساب",
+                        "Sign up",
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!

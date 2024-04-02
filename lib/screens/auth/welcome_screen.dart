@@ -31,7 +31,10 @@ class WelcomeScreen extends StatelessWidget {
                 Routes.login,
               );
             },
-            child: const Text(" Sign in"),
+            child: const Text(" Sign in",
+            style:TextStyle(color:  Colors.white,
+            )
+            ),
           ),
           const SizedBox(height: 20),
           ElevatedButton(
@@ -41,7 +44,9 @@ class WelcomeScreen extends StatelessWidget {
                 Routes.signUp,
               );
             },
-            child: const Text("Sign up"),
+            child: const Text("Sign up"
+            ,style:TextStyle(color:  Colors.white,
+            ),),
           ),
         ],
       )),
