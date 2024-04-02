@@ -9,7 +9,7 @@ ThemeData lightTheme() {
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 32,
-        color: AppColors.kTextColor,
+        color: Color.fromARGB(255, 255, 255, 255),
         fontWeight: FontWeight.w600,
       ),
       titleMedium: TextStyle(
@@ -19,7 +19,7 @@ ThemeData lightTheme() {
       ),
       titleSmall: TextStyle(
         fontSize: 12,
-        color: AppColors.kLightTextColor,
+        color: Color.fromARGB(255, 237, 237, 237),
         fontWeight: FontWeight.w600,
       ),
     ),

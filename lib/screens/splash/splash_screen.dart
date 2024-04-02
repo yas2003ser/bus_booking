@@ -1,6 +1,6 @@
 import 'package:bus_booking/core/util/app_colors.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
-import 'package:bus_booking/screens/auth/login/login.dart';
+import 'package:bus_booking/screens/auth/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 
@@ -22,7 +22,7 @@ class SplashScreen extends StatelessWidget {
           ),
         ),
         animationCurve: Curves.easeInOut,
-        nextScreen: const Login(),
+        nextScreen: const WelcomeScreen(),
       ),
     );
   }

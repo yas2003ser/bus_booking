@@ -1,17 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api, unused_element, use_build_context_synchronously, avoid_print, deprecated_member_use
 
-//import 'package:app/profile.dart';
-
 import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
 class Signup extends StatefulWidget {
-  static String id = "/signup";
-
   const Signup({super.key});
 
   @override
@@ -19,7 +13,6 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-
   late String username;
   late String email;
   late String password;
@@ -28,9 +21,7 @@ class _SignupState extends State<Signup> {
   bool passvis = true;
   bool passvis1 = true;
   late TextEditingController _emailController;
-    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -38,7 +29,6 @@ class _SignupState extends State<Signup> {
 
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -91,10 +81,9 @@ class _SignupState extends State<Signup> {
                           return null;
                         },
                         style: const TextStyle(color: Colors.black),
-                        keyboardType:TextInputType.emailAddress,
+                        keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                           hintText: "البريد الالكتروني",
-                          
                         ),
                       ),
                       SizedBox(height: size.height * 0.016),
@@ -109,10 +98,9 @@ class _SignupState extends State<Signup> {
                           return null;
                         },
                         style: const TextStyle(color: Colors.black),
-                        keyboardType:TextInputType.name,
+                        keyboardType: TextInputType.name,
                         decoration: const InputDecoration(
                           hintText: "الاسم المستخدم",
-                         
                         ),
                       ),
                       SizedBox(height: size.height * 0.016),
@@ -128,17 +116,19 @@ class _SignupState extends State<Signup> {
                         },
                         obscureText: passvis,
                         style: const TextStyle(color: Colors.black),
-                        keyboardType:TextInputType.visiblePassword,
+                        keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           hintText: "كلمة المرور",
-                          
-                          suffixIcon:  IconButton( icon: Icon(
-                           passvis ? Icons.visibility : Icons.visibility_off
-                            ),onPressed:(){
-                           setState(() {
-                              passvis= !passvis;
-                            });
-                          },),
+                          suffixIcon: IconButton(
+                            icon: Icon(passvis
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                passvis = !passvis;
+                              });
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(height: size.height * 0.016),
@@ -155,28 +145,26 @@ class _SignupState extends State<Signup> {
                           }
                           return null;
                         },
-                        
                         obscureText: passvis1,
                         style: const TextStyle(color: Colors.black),
-                        keyboardType:TextInputType.visiblePassword,
+                        keyboardType: TextInputType.visiblePassword,
                         decoration: InputDecoration(
                           hintText: "تاكيد كلمة المرور",
-                          
-                          suffixIcon:  IconButton( icon: Icon(
-                           passvis1 ? Icons.visibility : Icons.visibility_off
-                            ),onPressed:(){
-                            setState(() {
-                             passvis1= !passvis1;
-                            });
-                          },),
-                          
+                          suffixIcon: IconButton(
+                            icon: Icon(passvis1
+                                ? Icons.visibility
+                                : Icons.visibility_off),
+                            onPressed: () {
+                              setState(() {
+                                passvis1 = !passvis1;
+                              });
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(height: size.height * 0.025),
                       ElevatedButton(
-                        onPressed: () async {
-                         
-                        },
+                        onPressed: () async {},
                         child: Text(
                           "انشئ حسابك",
                           style: Theme.of(context).textTheme.subtitle1,
