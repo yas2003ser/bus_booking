@@ -1,3 +1,4 @@
+import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:flutter/material.dart';
 
@@ -87,9 +88,7 @@ class InformationScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    if (Form.of(context).validate()) {
-                      // Handle form submission
-                    }
+                    Navigator.pushNamed(context, Routes.home);
                   },
                   child: const Text(
                     'Finish',

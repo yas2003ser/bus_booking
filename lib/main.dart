@@ -1,8 +1,7 @@
 import 'package:bus_booking/app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const BusBooking());
+  runApp(const ProviderScope(child: BusBooking()));
 }
-
-

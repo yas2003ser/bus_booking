@@ -4,7 +4,7 @@ import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -118,7 +118,11 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: size.height * 0.021),
                 ElevatedButton(
-                  onPressed: () async {},
+                  onPressed: ()  {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, Routes.home);
+                    }
+                  },
                   child: Text(
                     " sign in",
                     style: Theme.of(context).textTheme.titleMedium,

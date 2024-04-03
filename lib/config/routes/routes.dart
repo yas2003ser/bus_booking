@@ -2,6 +2,7 @@ import 'package:bus_booking/screens/auth/informations_screen.dart';
 import 'package:bus_booking/screens/auth/login/login.dart';
 import 'package:bus_booking/screens/auth/signup/signup.dart';
 import 'package:bus_booking/screens/auth/welcome_screen.dart';
+import 'package:bus_booking/screens/home/home_screen.dart';
 import 'package:bus_booking/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -43,9 +44,11 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => const InformationScreen(),
         );
-      //   return MaterialPageRoute(
-      //     builder: (_) => ,
-      //   );
+      case Routes.home:
+        return MaterialPageRoute(
+          builder: (_) => const HomeScreen(),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
