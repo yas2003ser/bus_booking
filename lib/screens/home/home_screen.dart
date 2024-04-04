@@ -1,7 +1,7 @@
 import 'package:bus_booking/provider/nav_bar_provider.dart';
-import 'package:bus_booking/widgets/navBarScreens/booking.dart';
-import 'package:bus_booking/widgets/navBarScreens/home.dart';
-import 'package:bus_booking/widgets/navBarScreens/profile.dart';
+import 'package:bus_booking/screens/navBarScreens/booking.dart';
+import 'package:bus_booking/screens/navBarScreens/home.dart';
+import 'package:bus_booking/screens/navBarScreens/profile.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
