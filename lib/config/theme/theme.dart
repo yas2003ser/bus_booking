@@ -5,6 +5,7 @@ import "package:flutter/material.dart";
 
 ThemeData lightTheme() {
   return ThemeData(
+    useMaterial3: true,
     primaryColor: AppColors.kBlackColor,
     scaffoldBackgroundColor: AppColors.bgColor,
     textTheme: const TextTheme(
