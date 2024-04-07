@@ -6,6 +6,13 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map> profileButton = [
+      {'text': 'Bookings', 'OnPressed': () {}},
+      {'text': 'Wallet', 'OnPressed': () {}},
+      {'text': 'FeedBack', 'OnPressed': () {}},
+      {'text': 'About Us', 'OnPressed': () {}},
+      {'text': 'Sign Out', 'OnPressed': () {}},
+    ];
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -49,30 +56,16 @@ class Profile extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 40),
-          ProfileButton(
-            text: 'Bookings',
-            onPressed: () {},
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-            text: 'Wallet',
-            onPressed: () {},
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-            text: 'FeedBack',
-            onPressed: () {},
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-            text: 'About Us',
-            onPressed: () {},
-          ),
-          const SizedBox(height: 20),
-          ProfileButton(
-            text: 'Sign Out',
-            onPressed: () {},
-          ),
+          for (var profileButtons in profileButton)
+            Column(
+              children: [
+                ProfileButton(
+                  text: profileButtons['text'],
+                  onPressed: profileButtons['OnPressed'],
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
         ],
       ),
     );
