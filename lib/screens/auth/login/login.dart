@@ -5,7 +5,6 @@ import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -42,18 +41,11 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: size.height * 0.023),
                 Text(
-                  "Welcome to Bus Booking App",
+                  "Welcome to Bus Booking",
+                  textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline5,
                 ),
-                SizedBox(height: size.height * 0.018),
-                Text(
-                  "sign in",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge!
-                      .copyWith(fontSize: 15, color: Colors.black),
-                ),
-                SizedBox(height: size.height * 0.020),
+                SizedBox(height: size.height * 0.045),
                 Form(
                   key: _formKey,
                   child: Column(
@@ -118,7 +110,7 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: size.height * 0.021),
                 ElevatedButton(
-                  onPressed: ()  {
+                  onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       Navigator.pushNamed(context, Routes.home);
                     }
