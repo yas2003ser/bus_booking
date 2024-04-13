@@ -45,7 +45,9 @@ class Booking extends ConsumerWidget {
             else
               Column(
                 children: [
+                  const SizedBox(height: 50),
                   Image.asset(ImgAssets.tickets),
+                  const SizedBox(height: 20),
                   Image.asset(ImgAssets.tickets)
                 ],
               ),

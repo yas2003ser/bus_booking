@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProfileButton extends StatelessWidget {
-  const ProfileButton({super.key, required this.text, required this.onPressed});
+  const ProfileButton({super.key, required this.text, required this.onPressed, required this.icon});
   final String text;
   final VoidCallback onPressed;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class ProfileButton extends StatelessWidget {
           width: double.infinity,
           height: 50,
           decoration: BoxDecoration(
+            color: Colors.grey[200],
             border: Border.all(
               width: 0.2,
             ),
@@ -26,9 +28,9 @@ class ProfileButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Icon(
-                  Icons.arrow_forward_ios,
-                  color: Color(0xff042F40),
+                 Icon(
+                 icon,
+                  color: const Color(0xff042F40),
                 ),
                 const SizedBox(width: 20),
                 Text(
