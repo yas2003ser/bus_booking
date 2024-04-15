@@ -24,30 +24,40 @@ class WelcomeScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
           ),
           const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                Routes.login,
-              );
-            },
-            child: const Text(" Sign in",
-            style:TextStyle(color:  Colors.white,
-            )
+          Padding(
+            padding: const EdgeInsets.all(
+              20,
             ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                Routes.signUp,
-              );
-            },
-            child: const Text("Sign up"
-            ,style:TextStyle(color:  Colors.white,
-            ),),
-          ),
+            child: Column(children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    Routes.login,
+                  );
+                },
+                child: const Text(" Sign in",
+                    style: TextStyle(
+                      color: Colors.white,
+                    )),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    Routes.signUp,
+                  );
+                },
+                child: const Text(
+                  "Sign up",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ]),
+          )
         ],
       )),
     );

@@ -1,3 +1,7 @@
+import 'package:bus_booking/screens/profileScreens/about_us_screen.dart';
+import 'package:bus_booking/screens/profileScreens/feedback_screen.dart';
+import 'package:bus_booking/screens/profileScreens/offers_screen.dart';
+import 'package:bus_booking/screens/profileScreens/wallet_screen.dart';
 import 'package:bus_booking/widgets/profile_buttons.dart';
 import 'package:flutter/material.dart';
 
@@ -6,11 +10,42 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void onPressed(Widget widget) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => widget),
+      );
+    }
+
     final List<Map> profileButton = [
-      {'text': 'Bookings', 'OnPressed': () {}, 'icon': Icons.book_outlined},
-      {'text': 'Wallet', 'OnPressed': () {}, 'icon': Icons.wallet_outlined},
-      {'text': 'FeedBack', 'OnPressed': () {}, 'icon': Icons.feedback_outlined},
-      {'text': 'About Us', 'OnPressed': () {}, 'icon': Icons.info_outline},
+      {
+        'text': 'Wallet',
+        'OnPressed': () {
+          onPressed(const WalletScreen());
+        },
+        'icon': Icons.wallet_outlined
+      },
+      {
+        'text': 'offers',
+        'OnPressed': () {
+          onPressed(const OffersScreen());
+        },
+        'icon': Icons.local_offer_outlined
+      },
+      {
+        'text': 'FeedBack',
+        'OnPressed': () {
+          onPressed(const FeedBackScreen());
+        },
+        'icon': Icons.feedback_outlined
+      },
+      {
+        'text': 'About Us',
+        'OnPressed': () {
+          onPressed(const AboutUsScreen());
+        },
+        'icon': Icons.info_outline
+      },
       {'text': 'Sign Out', 'OnPressed': () {}, 'icon': Icons.logout_outlined},
     ];
     return SingleChildScrollView(
