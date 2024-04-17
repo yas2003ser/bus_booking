@@ -29,21 +29,21 @@ class HomeRoutes extends StatelessWidget {
               shrinkWrap: true,
               children: const [
                 BookingRoutes(
-                  from: 'Batna',
+                  from: 'Batna ',
                   to: 'Setif',
-                  price: '500',
+                  price: '500 DA',
                 ),
                 SizedBox(width: 10),
                 BookingRoutes(
                   from: 'Constantine',
                   to: 'Alger',
-                  price: '1200',
+                  price: '1200 DA',
                 ),
                 SizedBox(width: 10),
                 BookingRoutes(
                   from: 'Elma',
                   to: 'Oran',
-                  price: '3500',
+                  price: '3500 DA',
                 ),
               ],
             ),

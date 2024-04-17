@@ -2,10 +2,11 @@ import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:flutter/material.dart';
 
 class BookingRoutes extends StatelessWidget {
-  const BookingRoutes({super.key, required this.from, required this.to, required this.price});
-  final String from ;
-  final String to ;
-  final String price ;
+  const BookingRoutes(
+      {super.key, required this.from, required this.to, required this.price});
+  final String from;
+  final String to;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class BookingRoutes extends StatelessWidget {
           children: [
             Image.asset(ImgAssets.logo),
             const SizedBox(width: 10),
-             Column(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -63,7 +64,7 @@ class BookingRoutes extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "DA $price",
+                  price,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 15,
