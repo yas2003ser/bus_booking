@@ -6,8 +6,8 @@ import "package:flutter/material.dart";
 ThemeData lightTheme() {
   return ThemeData(
     useMaterial3: true,
-    primaryColor: AppColors.kBlackColor,
-    scaffoldBackgroundColor: AppColors.bgColor,
+    primaryColor: const Color(0xff042F40),
+    scaffoldBackgroundColor: const Color(0xffD8D8D8),
     textTheme: const TextTheme(
       titleLarge: TextStyle(
         fontSize: 32,

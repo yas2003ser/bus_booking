@@ -24,29 +24,38 @@ class FeedBackScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                    hintStyle:
-                        const TextStyle(color: Colors.grey, fontSize: 14),
-                    hintText: 'Search for FAQ\'s ',
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0),
-                      borderSide: const BorderSide(
-                        color: Colors.black,
+                Container(
+                  color: Colors.white,
+                  child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 0),
+                      hintStyle:
+                          const TextStyle(color: Colors.grey, fontSize: 14),
+                      hintText: 'Search for FAQ\'s ',
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0),
-                      borderSide: const BorderSide(
-                        color: Colors.black,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                        ),
                       ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(0),
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      suffixIcon: const Icon(Icons.search),
                     ),
-                    suffixIcon: const Icon(Icons.search),
-                  ),
-                  style: const TextStyle(
-                    fontSize: 15,
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -58,7 +67,7 @@ class FeedBackScreen extends StatelessWidget {
                         fontSize: 18,
                         color: Color(0xff042F40),
                       )),
-                  elevation: 10,
+                  elevation: 5,
                   initialElevation: 10,
                   shadowColor: Colors.black,
                   borderRadius: BorderRadius.circular(20),
@@ -112,7 +121,7 @@ class FeedBackScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(right: 100),
@@ -156,7 +165,7 @@ class FeedBackScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 20,
                 ),
                 const Padding(
                   padding: EdgeInsets.only(right: 170),
@@ -178,7 +187,7 @@ class FeedBackScreen extends StatelessWidget {
                   elevation: 5,
                   child: Container(
                     width: 340,
-                    height: 50,
+                    height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
@@ -196,7 +205,7 @@ class FeedBackScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Card(
                   shape: RoundedRectangleBorder(
@@ -205,7 +214,7 @@ class FeedBackScreen extends StatelessWidget {
                   elevation: 5,
                   child: Container(
                     width: 340,
-                    height: 50,
+                    height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
@@ -224,7 +233,7 @@ class FeedBackScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Card(
                   shape: RoundedRectangleBorder(
@@ -233,7 +242,7 @@ class FeedBackScreen extends StatelessWidget {
                   elevation: 5,
                   child: Container(
                     width: 340,
-                    height: 50,
+                    height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(20),
@@ -250,9 +259,6 @@ class FeedBackScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
                 ),
               ],
             ),

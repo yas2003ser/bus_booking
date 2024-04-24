@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   another_flutter_splash_screen: ^1.2.0
+  credit_card_form: ^0.0.7
   cupertino_icons: ^1.0.6
   dot_navigation_bar: ^1.0.2
   dotted_border: ^2.1.0

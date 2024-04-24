@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
+  credit_card_form:
+    dependency: "direct main"
+    description:
+      name: credit_card_form
+      sha256: "1943fe2f2b2ab9204d76ca1135c6f313907f59199ab0e546d489cedf55c9fd0a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.7"
   cupertino_icons:
     dependency: "direct main"
     description:
