@@ -1,15 +1,17 @@
+import 'package:bus_booking/provider/auth_provider.dart';
 import 'package:bus_booking/screens/profileScreens/about_us_screen.dart';
 import 'package:bus_booking/screens/profileScreens/feedback_screen.dart';
 import 'package:bus_booking/screens/profileScreens/offers_screen.dart';
 import 'package:bus_booking/screens/profileScreens/wallet_screen.dart';
 import 'package:bus_booking/widgets/profile_buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends ConsumerWidget {
   const Profile({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     void onPressed(Widget widget) {
       Navigator.push(
         context,
@@ -46,7 +48,13 @@ class Profile extends StatelessWidget {
         },
         'icon': Icons.info_outline
       },
-      {'text': 'Sign Out', 'OnPressed': () {}, 'icon': Icons.logout_outlined},
+      {
+        'text': 'Sign Out',
+        'OnPressed': () {
+          ref.read(authProvider.notifier).logout(context);
+        },
+        'icon': Icons.logout_outlined
+      },
     ];
     return SingleChildScrollView(
       child: Column(

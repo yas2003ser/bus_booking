@@ -2,32 +2,28 @@
 
 import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
+import 'package:bus_booking/provider/auth_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Signup extends StatefulWidget {
+class Signup extends ConsumerStatefulWidget {
   const Signup({super.key});
 
   @override
-  _SignupState createState() => _SignupState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _SignupState();
 }
 
-class _SignupState extends State<Signup> {
-  late String username;
-  late String email;
-  late String password;
-  late String confirmPassword;
-  late String errorMessage;
+class _SignupState extends ConsumerState<Signup> {
+  String? email;
+  String? password;
   bool passvis = true;
   bool passvis1 = true;
-  late TextEditingController _emailController;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    _emailController = TextEditingController();
-
-    super.initState();
+  void register() {
+    if (_formKey.currentState!.validate()) {
+      ref.read(authProvider.notifier).register(email!, password!, context);
+    }
   }
 
   @override
@@ -62,8 +58,12 @@ class _SignupState extends State<Signup> {
                   child: Column(
                     children: [
                       TextFormField(
-                        controller: _emailController,
                         onChanged: (value) {
+                          setState(() {
+                            email = value;
+                          });
+                        },
+                        onSaved: (value) {
                           email = value;
                         },
                         validator: (value) {
@@ -80,15 +80,6 @@ class _SignupState extends State<Signup> {
                       ),
                       SizedBox(height: size.height * 0.016),
                       TextFormField(
-                        onChanged: (value) {
-                          username = value;
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your username';
-                          }
-                          return null;
-                        },
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.name,
                         decoration: const InputDecoration(
@@ -98,6 +89,11 @@ class _SignupState extends State<Signup> {
                       SizedBox(height: size.height * 0.016),
                       TextFormField(
                         onChanged: (value) {
+                          setState(() {
+                            password = value;
+                          });
+                        },
+                        onSaved: (value) {
                           password = value;
                         },
                         validator: (value) {
@@ -125,18 +121,6 @@ class _SignupState extends State<Signup> {
                       ),
                       SizedBox(height: size.height * 0.016),
                       TextFormField(
-                        onChanged: (value) {
-                          confirmPassword = value;
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          if (value != password) {
-                            return 'Passwords do not match';
-                          }
-                          return null;
-                        },
                         obscureText: passvis1,
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.visiblePassword,
@@ -156,11 +140,7 @@ class _SignupState extends State<Signup> {
                       ),
                       SizedBox(height: size.height * 0.025),
                       ElevatedButton(
-                        onPressed: ()  {
-                          if (_formKey.currentState!.validate()) {
-                            Navigator.pushNamed(context, Routes.informationScreen);
-                          }
-                        },
+                        onPressed: register,
                         child: Text(
                           "Sign up",
                           style: Theme.of(context).textTheme.subtitle1,

@@ -1,4 +1,5 @@
 import 'package:bus_booking/provider/nav_bar_provider.dart';
+
 import 'package:bus_booking/screens/navBarScreens/booking.dart';
 import 'package:bus_booking/screens/navBarScreens/home.dart';
 import 'package:bus_booking/screens/navBarScreens/profile.dart';

@@ -2,21 +2,28 @@
 
 import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
+import 'package:bus_booking/provider/auth_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class Login extends StatefulWidget {
+class Login extends ConsumerStatefulWidget {
   const Login({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
-  late String email;
-  late String password;
+class _LoginState extends ConsumerState<Login> {
+  String? email;
+  String? password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  //late bool passvis;
+
+  void login() {
+    if (_formKey.currentState!.validate()) {
+      ref.read(authProvider.notifier).login(email!, password!, context);
+    }
+  }
 
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -56,6 +63,9 @@ class _LoginState extends State<Login> {
                             email = value;
                           });
                         },
+                        onSaved: (value) {
+                          email = value!;
+                        },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'please enter your email';
@@ -73,6 +83,9 @@ class _LoginState extends State<Login> {
                           setState(() {
                             password = value;
                           });
+                        },
+                        onSaved: (value) {
+                          password = value!;
                         },
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -110,11 +123,7 @@ class _LoginState extends State<Login> {
                 ),
                 SizedBox(height: size.height * 0.021),
                 ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, Routes.home);
-                    }
-                  },
+                  onPressed: login,
                   child: Text(
                     " sign in",
                     style: Theme.of(context).textTheme.titleMedium,
@@ -152,16 +161,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-//import 'package:firebase_auth/firebase_auth.dart';
-
-// داخل الحدث onPressed لزر تسجيل الخروج
-//void signOut() async {
- // try {
- //   await FirebaseAuth.instance.signOut();
-    // إضافة أي إجراءات إضافية ترغب في تنفيذها بعد تسجيل الخروج هنا
-    // مثلاً إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
-  //  Navigator.pushNamed(context, 'login');
- // } catch (e) {
- //   print('حدث خطأ أثناء تسجيل الخروج: $e');
- // }
-//}
