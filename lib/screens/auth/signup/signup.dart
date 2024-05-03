@@ -1,8 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api, unused_element, use_build_context_synchronously, avoid_print, deprecated_member_use
 
+import 'dart:io';
+
 import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:bus_booking/provider/auth_provider.dart';
+import 'package:bus_booking/widgets/user_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,12 +20,27 @@ class Signup extends ConsumerStatefulWidget {
 class _SignupState extends ConsumerState<Signup> {
   String? email;
   String? password;
+  String? username;
+  File? selectedImage;
+  bool _isLoading = false;
   bool passvis = true;
   bool passvis1 = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   void register() {
-    if (_formKey.currentState!.validate()) {
-      ref.read(authProvider.notifier).register(email!, password!, context);
+    try {
+      if (_formKey.currentState!.validate()) {
+        setState(() {
+          _isLoading = true;
+        });
+        ref
+            .read(authProvider.notifier)
+            .register(email!, password!, context, username!, selectedImage!);
+      }
+    } catch (e) {
+      print(e);
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -57,6 +75,12 @@ class _SignupState extends ConsumerState<Signup> {
                   key: _formKey,
                   child: Column(
                     children: [
+                      UserImagePicker(
+                        onPickImage: (File pickedImage) {
+                          selectedImage = pickedImage;
+                        },
+                      ),
+                      SizedBox(height: size.height * 0.016),
                       TextFormField(
                         onChanged: (value) {
                           setState(() {
@@ -80,6 +104,11 @@ class _SignupState extends ConsumerState<Signup> {
                       ),
                       SizedBox(height: size.height * 0.016),
                       TextFormField(
+                        onChanged: (value) {
+                          setState(() {
+                            username = value;
+                          });
+                        },
                         style: const TextStyle(color: Colors.black),
                         keyboardType: TextInputType.name,
                         decoration: const InputDecoration(
@@ -140,11 +169,17 @@ class _SignupState extends ConsumerState<Signup> {
                       ),
                       SizedBox(height: size.height * 0.025),
                       ElevatedButton(
-                        onPressed: register,
-                        child: Text(
-                          "Sign up",
-                          style: Theme.of(context).textTheme.subtitle1,
-                        ),
+                        onPressed: _isLoading ? null : register,
+                        child: _isLoading
+                            ? const SizedBox(
+                                height: 16,
+                                width: 16,
+                                child: CircularProgressIndicator(),
+                              )
+                            : Text(
+                                "Sign up",
+                                style: Theme.of(context).textTheme.subtitle1,
+                              ),
                       ),
                     ],
                   ),

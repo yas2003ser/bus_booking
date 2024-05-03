@@ -89,7 +89,7 @@ class InformationScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.home);
+                      Navigator.pushReplacementNamed(context, Routes.home);
                     },
                     child: const Text(
                       'Finish',

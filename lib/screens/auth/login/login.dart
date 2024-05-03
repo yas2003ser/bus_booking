@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously, unnecessary_null_comparison, deprecated_member_use, annotate_overrides
 
+import 'dart:developer';
+
 import 'package:bus_booking/config/routes/routes.dart';
 import 'package:bus_booking/core/util/img_assets.dart';
 import 'package:bus_booking/provider/auth_provider.dart';
@@ -18,10 +20,20 @@ class _LoginState extends ConsumerState<Login> {
   String? email;
   String? password;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  bool _isLoading = false;
   void login() {
-    if (_formKey.currentState!.validate()) {
-      ref.read(authProvider.notifier).login(email!, password!, context);
+    try {
+      if (_formKey.currentState!.validate()) {
+        setState(() {
+          _isLoading = true;
+        });
+        ref.read(authProvider.notifier).login(email!, password!, context);
+      }
+    } catch (e) {
+      log(e.toString());
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
@@ -123,11 +135,17 @@ class _LoginState extends ConsumerState<Login> {
                 ),
                 SizedBox(height: size.height * 0.021),
                 ElevatedButton(
-                  onPressed: login,
-                  child: Text(
-                    " sign in",
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
+                  onPressed: _isLoading ? null : login,
+                  child: _isLoading
+                      ? const SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: CircularProgressIndicator(),
+                        )
+                      : Text(
+                          " sign in",
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
                 ),
                 SizedBox(height: size.height * 0.029),
                 Row(

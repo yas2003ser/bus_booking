@@ -1,9 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:bus_booking/config/routes/routes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +23,7 @@ class AuthProvider extends StateNotifier<User?> {
       );
       state = userCredential.user;
       if (state != null) {
-        Navigator.pushNamed(context, Routes.home);
+        Navigator.pushReplacementNamed(context, Routes.home);
       }
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).clearSnackBars();
@@ -32,21 +35,43 @@ class AuthProvider extends StateNotifier<User?> {
     }
   }
 
-  void register(String email, String password, BuildContext context) async {
+  void register(String email, String password, BuildContext context,
+      String userName, File selectedImage) async {
     try {
-      UserCredential userCredentials =
+      final UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      state = userCredentials.user;
+
+      final Reference storageRef = FirebaseStorage.instance
+          .ref()
+          .child('user_images')
+          .child('${userCredential.user!.uid}.jpg');
+
+      await storageRef.putFile(selectedImage);
+      final imageUrl = await storageRef.getDownloadURL();
+      log(imageUrl);
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user!.uid)
+          .set({
+        'username': userName,
+        'email': email,
+        'image_url': imageUrl,
+      });
+      state = userCredential.user;
       if (state != null) {
-        Navigator.pushNamed(context, Routes.informationScreen);
+        Navigator.pushReplacementNamed(context, Routes.informationScreen);
       }
     } on FirebaseAuthException catch (e) {
-      log(e.message.toString());
-      log(email);
-      log(password);
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.message ?? 'Authentication failed.'),
+        ),
+      );
     }
   }
 
@@ -54,8 +79,7 @@ class AuthProvider extends StateNotifier<User?> {
     await _auth.signOut();
     state = null;
     if (state == null) {
-      Navigator.pushNamed(context, Routes.login);
-      
+      Navigator.pushReplacementNamed(context, Routes.login);
     }
   }
 }
@@ -63,3 +87,29 @@ class AuthProvider extends StateNotifier<User?> {
 final authProvider = StateNotifierProvider<AuthProvider, User?>((ref) {
   return AuthProvider();
 });
+
+/*
+ final UserCredential userCredential =
+            await _firebase.createUserWithEmailAndPassword(
+          email: _enteredEmail,
+          password: _enteredPassword,
+        );
+
+        final Reference storageRef = FirebaseStorage.instance
+            .ref()
+            .child('user_images')
+            .child('${userCredential.user!.uid}.jpg');
+
+        await storageRef.putFile(_selectedImage!);
+        final imageUrl = await storageRef.getDownloadURL();
+        log(imageUrl);
+
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(userCredential.user!.uid)
+            .set({
+          'username': _enteredUsername,
+          'email': _enteredEmail,
+          'image_url': imageUrl,
+        });
+*/
