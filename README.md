@@ -19,7 +19,9 @@ samples, guidance on mobile development, and a full API reference.
 
 ├── app.dart
 ├── config
+
 │   ├── routes
+
 │   │   └── routes.dart
 
 │   └── theme
