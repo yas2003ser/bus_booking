@@ -18,11 +18,8 @@ samples, guidance on mobile development, and a full API reference.
 ### bus_booking Tree 
 
 ├── app.dart
-
 ├── config
-
 │   ├── routes
-
 │   │   └── routes.dart
 
 │   └── theme
