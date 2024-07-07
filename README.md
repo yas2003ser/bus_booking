@@ -110,23 +110,23 @@ samples, guidance on mobile development, and a full API reference.
 │       └── splash_screen.dart
 
 └── widgets
-    ├── booking_routes.dart
+   ├── booking_routes.dart
     
-    ├── button_state.dart
+   ├── button_state.dart
     
-    ├── feedback_button.dart
+   ├── feedback_button.dart
     
-    ├── field_search.dart
+   ├── field_search.dart
     
-    ├── home_rotes.dart
+   ├── home_rotes.dart
     
-    ├── offers.dart
+   ├── offers.dart
     
-    ├── profile_buttons.dart
+   ├── profile_buttons.dart
     
-    ├── search_card.dart
+   ├── search_card.dart
     
-    ├── ticket_bus.dart
+   ├── ticket_bus.dart
     
-    └── wallet_transaction_details.dart
+   └── wallet_transaction_details.dart
 
